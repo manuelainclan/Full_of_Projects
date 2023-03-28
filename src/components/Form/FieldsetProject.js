@@ -6,7 +6,6 @@ const FieldsetProject = ({ data, handleInput, message, messageErrorClass }) => {
         <hr className="legend-line" />
       </legend>
       <label className="form-label">
-        {" "}
         Nombre del proyecto:
         <input
           className="input"
@@ -20,15 +19,17 @@ const FieldsetProject = ({ data, handleInput, message, messageErrorClass }) => {
           onInput={handleInput}
         />
       </label>
-      <small className={`error-message ${messageErrorClass.name}`}>{message.name}</small>
+      <small className={`error-message ${messageErrorClass.name}`}>
+        {message.name}
+      </small>
       <label className="form-label">
-        Slogan:
+        Eslogan:
         <input
           className="input"
           type="text"
           name="slogan"
           id="el eslogan"
-          placeholder="Slogan"
+          placeholder="Eslogan"
           minLength="2"
           required
           value={data.slogan}
@@ -39,7 +40,6 @@ const FieldsetProject = ({ data, handleInput, message, messageErrorClass }) => {
         {message.slogan}
       </small>
       <label className="form-label">
-        {" "}
         Repo:
         <input
           className="input"
@@ -52,7 +52,9 @@ const FieldsetProject = ({ data, handleInput, message, messageErrorClass }) => {
           onInput={handleInput}
         />
       </label>
-      <small className={`error-message ${messageErrorClass.repo}`}>{message.repo}</small>
+      <small className={`error-message ${messageErrorClass.repo}`}>
+        {message.repo}
+      </small>
       <label className="form-label">
         Demo:
         <input
@@ -66,7 +68,9 @@ const FieldsetProject = ({ data, handleInput, message, messageErrorClass }) => {
           onInput={handleInput}
         />
       </label>
-      <small className={`error-message ${messageErrorClass.demo}`}>{message.demo}</small>
+      <small className={`error-message ${messageErrorClass.demo}`}>
+        {message.demo}
+      </small>
       <label className="form-label">
         Tecnologías:
         <input
@@ -97,7 +101,9 @@ const FieldsetProject = ({ data, handleInput, message, messageErrorClass }) => {
           maxLength="500ch"
         ></textarea>
       </label>
-      <small className={`error-message ${messageErrorClass.desc}`}>{message.desc}</small>
+      <small className={`error-message ${messageErrorClass.desc}`}>
+        {message.desc}
+      </small>
     </fieldset>
   );
 };

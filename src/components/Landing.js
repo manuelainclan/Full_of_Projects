@@ -10,9 +10,10 @@ const Landing = ({ setDataCardList }) => {
 
   const handleBtnRemoveCard = (ev) => {
     const position = ev.currentTarget.id;
-    dataCardLS.splice(position, 1);
-    ls.set('dataCardLS', dataCardLS);
-    setDataCardList(dataCardLS);
+    const newArray = [...dataCardLS];
+    newArray.splice(position, 1);
+    ls.set('dataCardLS', newArray);
+    setDataCardList(newArray);
   };
 
   const renderCard = () => {

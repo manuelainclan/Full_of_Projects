@@ -61,9 +61,35 @@ function CreateProject({ dataCardList, setDataCardList }) {
     const inputId = ev.target.id;
     setIsCreatedCard(false);
     setinfoURL('');
-    if (inputName === 'repo' || inputName === 'demo') {
+
+    if (
+      (inputName === 'repo' || inputName === 'demo') &&
+      !pattern.test(inputValue)
+    ) {
+      setMessage({ ...message, [inputName]: 'Introduce una URL válida' });
+      setMessageErrorClass({
+        ...messageErrorClass,
+        [inputName]: 'error-message-display',
+      });
+    } else if (!inputValue) {
+      setMessage({
+        ...message,
+        [inputName]: `Rellena este campo con ${inputId}`,
+      });
+      setMessageErrorClass({
+        ...messageErrorClass,
+        [inputName]: 'error-message-display',
+      });
+    } else {
+      setMessage({ ...message, [inputName]: '' });
+      setMessageErrorClass({ ...messageErrorClass, [inputName]: '' });
+    }
+
+    setData({ ...data, [inputName]: inputValue });
+
+    /*if (inputName === 'repo' || inputName === 'demo') {
       if (pattern.test(inputValue)) {
-        setData({ ...data, [inputName]: inputValue });
+        // setData({ ...data, [inputName]: inputValue });
         setMessageErrorClass({ ...messageErrorClass, [inputName]: '' });
       } else {
         setMessage({ ...message, [inputName]: 'Introduce una URL válida' });
@@ -82,11 +108,12 @@ function CreateProject({ dataCardList, setDataCardList }) {
           ...messageErrorClass,
           [inputName]: 'error-message-display',
         });
+        // setData({ ...data, [inputName]: inputValue });
       } else {
-        setData({ ...data, [inputName]: inputValue });
         setMessageErrorClass({ ...messageErrorClass, [inputName]: '' });
       }
-    }
+      setData({ ...data, [inputName]: inputValue });
+    }*/
   };
 
   const handleClickCreateCard = (ev) => {
