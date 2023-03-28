@@ -5,13 +5,18 @@ import logoFop from '../images/logo-fop.png';
 import ls from '../service/localStorage';
 import '../styles/App.scss';
 
-const Landing = ({ setDataCardList }) => {
-  const dataCardLS = ls.get('dataCardLS', []);
+const Landing = ({ setDataCardList, dataCardList }) => {
+  const handleFav = (ev) => {
+    const position = ev.currentTarget.id;
+    const newArray = [...dataCardList];
+    newArray[position].isFavorite = !newArray[position].isFavorite;
+    setDataCardList(newArray);
+  };
 
   //const handleBtnRemoveCard = (ev) => {};
 
   const renderCard = () => {
-    return dataCardLS.map((obj, index) => {
+    return dataCardList.map((obj, index) => {
       return (
         <li key={index} className="landing-card">
           <div
@@ -60,6 +65,16 @@ const Landing = ({ setDataCardList }) => {
             <p className="autor-job">{obj.job}</p>
             <p className="autor-name">{obj.autor}</p>
           </section>
+          <button className="btn-fav" onClick={handleFav} id={index}>
+            {obj.isFavorite ? (
+              <i
+                className="fa-solid fa-star icon-fav"
+                style={{ color: '#fff700' }}
+              ></i>
+            ) : (
+              <i className="fa-regular fa-star icon-fav"></i>
+            )}
+          </button>
         </li>
       );
     });

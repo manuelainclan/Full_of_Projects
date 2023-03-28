@@ -10,7 +10,15 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Landing setDataCardList={setDataCardList} />} />
+      <Route
+        path="/"
+        element={
+          <Landing
+            setDataCardList={setDataCardList}
+            dataCardList={dataCardList}
+          />
+        }
+      />
       <Route
         path="/create"
         element={
