@@ -597,3 +597,21 @@
     background: transparent;
     cursor: pointer;
 }
+
+.icon-fav {
+    font-size: 20px;
+    color: black;
+
+    @media all and (min-width: 768px) {
+        font-size: 25px;
+    }
+}
+
+.btn-fav{
+    z-index: 1;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    border: none;
+    background: transparent;
+}

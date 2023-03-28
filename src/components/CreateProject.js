@@ -124,7 +124,10 @@ function CreateProject({ dataCardList, setDataCardList }) {
         setCompletedForm(true);
         setIsCreatedCard(true);
         setinfoURL(info.cardURL);
-        dataCardList.unshift(data);
+        dataCardList.unshift({
+          ...data,
+          isFavorite: false,
+        }); /*Nos estábamos equivocando de datos*/
         setDataCardList([...dataCardList]);
         setData(defaultData);
       } else {
