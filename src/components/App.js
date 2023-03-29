@@ -11,11 +11,11 @@ function App() {
 
   const { pathname } = useLocation();
 
-  const datalUrl = matchPath('/DetailCard/:id', pathname);
+  const datalUrl = matchPath('/Card/:index', pathname);
 
   console.log(datalUrl);
 
-  /*  const cardDetailId = datalUrl !== null ? datalUrl.params.id : null;
+  /*  const cardDetailId = datalUrl !== null ? datalUrl.params.name : null;
 
   const cardFind = dataCardList.find((eachCard)=>eachCard.id{})
  */

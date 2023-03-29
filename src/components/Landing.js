@@ -27,54 +27,54 @@ const Landing = ({ setDataCardList }) => {
       })
       .map((obj, index) => {
         return (
-          <li key={index} className="landing-card">
-            <div
-              className="landing-card-background"
-              style={{
-                backgroundImage: `url(${obj.photo})`,
-              }}
-            ></div>
-            {/* <button className="btn-remove-card" onClick={handleBtnRemoveCard}>
-            <i class="fa-sharp fa-solid fa-circle-xmark icons"></i>
-          </button> */}
-            <section className="project-info">
-              <p className="project-subtitle">Personal Project Card</p>
-              <hr className="landing-card-line" />
-
-              <h2 className="project-title">{obj.name}</h2>
-              <p className="project-slogan">{obj.slogan}</p>
-              <p className="project-desc">{obj.desc}</p>
-              <section className="tech-icons">
-                <section className="project-technologies">
-                  <p className="text">{obj.technologies}</p>
-                </section>
-                <section>
-                  <a href={obj.demo} target="blank">
-                    <i
-                      className="fa-solid fa-globe icons"
-                      title="Link a demo"
-                    ></i>
-                  </a>
-                  <a href={obj.repo} target="blank">
-                    <i
-                      className="fa-brands fa-github icons"
-                      title="Link a repositorio"
-                    ></i>
-                  </a>
+          <Link to={`/card/${index}`}>
+            <li key={index} className="landing-card">
+              <div
+                className="landing-card-background"
+                style={{
+                  backgroundImage: `url(${obj.photo})`,
+                }}
+              ></div>
+              {/* <button className="btn-remove-card" onClick={handleBtnRemoveCard}>
+              <i class="fa-sharp fa-solid fa-circle-xmark icons"></i>
+            </button> */}
+              <section className="project-info">
+                <p className="project-subtitle">Personal Project Card</p>
+                <hr className="landing-card-line" />
+                <h2 className="project-title">{obj.name}</h2>
+                <p className="project-slogan">{obj.slogan}</p>
+                <p className="project-desc">{obj.desc}</p>
+                <section className="tech-icons">
+                  <section className="project-technologies">
+                    <p className="text">{obj.technologies}</p>
+                  </section>
+                  <section>
+                    <a href={obj.demo} target="blank">
+                      <i
+                        className="fa-solid fa-globe icons"
+                        title="Link a demo"
+                      ></i>
+                    </a>
+                    <a href={obj.repo} target="blank">
+                      <i
+                        className="fa-brands fa-github icons"
+                        title="Link a repositorio"
+                      ></i>
+                    </a>
+                  </section>
                 </section>
               </section>
-            </section>
-
-            <section className="autor-info">
-              <img
-                className="autor-image"
-                src={obj.image}
-                alt="Foto de la autora"
-              />
-              <p className="autor-job">{obj.job}</p>
-              <p className="autor-name">{obj.autor}</p>
-            </section>
-          </li>
+              <section className="autor-info">
+                <img
+                  className="autor-image"
+                  src={obj.image}
+                  alt="Foto de la autora"
+                />
+                <p className="autor-job">{obj.job}</p>
+                <p className="autor-name">{obj.autor}</p>
+              </section>
+            </li>
+          </Link>
         );
       });
   };
