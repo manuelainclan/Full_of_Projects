@@ -13,6 +13,7 @@ const Landing = ({ setDataCardList, dataCardList }) => {
     const position = ev.currentTarget.id;
     const newArray = [...dataCardList];
     newArray[position].isFavorite = !newArray[position].isFavorite;
+    ls.set("dataCardLS", newArray);
     setDataCardList(newArray);
     
   };
@@ -103,10 +104,8 @@ const Landing = ({ setDataCardList, dataCardList }) => {
   const renderFavs = () => {
     return dataCardList
       .filter((fav) => {
-        if (fav.isFavorite === true) {
-          return true; //pongo un true porque es un boleano es un filtro de si o no
-        }
-      })
+        return fav.isFavorite === true ? true : null  
+       })
       .map((obj, index) => {
         return (
           <li key={index} className="landing-card">
@@ -161,7 +160,7 @@ const Landing = ({ setDataCardList, dataCardList }) => {
               <p className="autor-job">{obj.job}</p>
               <p className="autor-name">{obj.autor}</p>
             </section>
-            <button className="btn-fav" onClick={handleFav} id={index}>
+            {/* <button className="btn-fav" onClick={handleFav} id={index}>
               {obj.isFavorite ? (
                 <i
                   className="fa-solid fa-star icon-fav"
@@ -170,7 +169,7 @@ const Landing = ({ setDataCardList, dataCardList }) => {
               ) : (
                 <i className="fa-regular fa-star icon-fav"></i>
               )}
-            </button>
+            </button> */}
           </li>
         );
       });
