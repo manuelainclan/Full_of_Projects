@@ -62,15 +62,6 @@ const Landing = ({ setDataCardList, dataCardList }) => {
                 <section className="project-technologies">
                   <p className="text">{obj.technologies}</p>
                 </section>
-                <section className="autor-info">
-                  <img
-                    className="autor-image"
-                    src={obj.image}
-                    alt="Foto de la autora"
-                  />
-                  <p className="autor-job">{obj.job}</p>
-                  <p className="autor-name">{obj.autor}</p>
-                </section>
               </section>
             </section>
 
@@ -126,6 +117,13 @@ const Landing = ({ setDataCardList, dataCardList }) => {
             title="Crear una nueva tarjeta"
           >
             Nuevo proyecto
+          </Link>
+          <Link
+            className="link btn-large"
+            to="/CardDetail"
+            title="Detalle de Tarjeta"
+          >
+            Detalle de Tarjeta
           </Link>
           <button
             className="btn-reset-cards"
