@@ -490,6 +490,22 @@
         box-shadow: 2px 5px 4px  rgb(0, 0, 0);   
 
     }
+    &-title2 {
+        color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            margin-top: 30px;
+            font-family: 'Bitter', serif;
+            font-weight: bolder;
+            background-color: #415986;
+            opacity: 80%;
+            border-radius: 20px;
+            height: 60px;
+            box-shadow: 2px 5px 4px black;
+            width: 600px;
+    }
 
     &-subtitle {
         color: #ffffff;

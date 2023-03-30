@@ -201,6 +201,7 @@ const Landing = ({ setDataCardList, dataCardList }) => {
           </button>
         </section>
         <ul className="landing-ul">{renderCard()}</ul>
+        <h2 className="landing-title2">Tus favoritos</h2>
         <ul className="landing-ul">{renderFavs()}</ul>
       </main>
     </div>
