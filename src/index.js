@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './components/App';
-import { HashRouter } from 'react-router-dom';
+const express = require('express');
+const cors = require('cors');
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <HashRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </HashRouter>
-);
+// create and config server
+const server = express();
+server.use(cors());
+server.use(express.json());
+
+// init express aplication
+const serverPort = 4000;
+server.listen(serverPort, () => {
+  console.log(`Server listening at http://localhost:${serverPort}`);
+});
