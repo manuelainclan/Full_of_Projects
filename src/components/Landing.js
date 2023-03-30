@@ -132,23 +132,24 @@ const Landing = ({ setDataCardList, dataCardList }) => {
           >
             Borrar proyectos
           </button>
-          <form>
-            <label className="label-filter">Filtrar por Proyecto</label>
-            <input
-              type="text"
-              className="input_filter"
-              onChange={handleInputP}
-              value={searchP}
-            ></input>
-            <label className="label-filter">Filtrar por Autora</label>
-            <input
-              type="text"
-              className="input_filter"
-              onChange={handleInputA}
-              value={searchA}
-            ></input>
-          </form>
         </section>
+        <form className="ld-form">
+          <label className="ld-form-label-filter">Filtrar por Proyecto</label>
+          <input
+            type="text"
+            className="ld-form-input-filter"
+            onChange={handleInputP}
+            value={searchP}
+          ></input>
+          <label className="ld-form-label-filter">Filtrar por Autora</label>
+          <input
+            type="text"
+            className="ld-form-input-filter"
+            onChange={handleInputA}
+            value={searchA}
+          ></input>
+        </form>
+
         <ul className="landing-ul">{renderCard()}</ul>
       </main>
     </div>
