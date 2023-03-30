@@ -32,7 +32,10 @@ function App() {
           />
         }
       />
-      <Route path="/DetailCard/:id" element={<CardDetail></CardDetail>}></Route>
+      <Route
+        path="/CardDetail"
+        element={<CardDetail dataCardList={dataCardList} />}
+      ></Route>
     </Routes>
   );
 }

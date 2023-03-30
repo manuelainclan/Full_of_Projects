@@ -1,5 +1,55 @@
-const CardDetail = () => {
-  return <section className="card"></section>;
+const CardDetail = ({ dataCardList }) => {
+  return dataCardList.map((data, index) => {
+    return (
+      <div className="container">
+        <section className="card">
+          <section className="project-info">
+            <p className="project-subtitle">Tarjeta sobre el proyecto</p>
+            <hr className="card-line" />
+            <h2 className="project-title">{data.name || 'Mi proyecto'}</h2>
+            <p className="project-slogan">
+              {data.slogan || 'Diseños Exclusivos'}
+            </p>
+            <p className="project-desc">
+              {data.desc ||
+                `En este espacio proporcionaremos la información sobre nuestro proyecto
+             que consideremos importante y/o relevante. Te aconsejamos ser breve y concisa, será más sencillo para los demás usuarios que vean tu tarjeta!`}
+            </p>
+            <section className="tech-icons">
+              <section className="project-technologies">
+                <p className="text">
+                  {data.technologies || 'React JS, MongoDB'}
+                </p>
+              </section>
+              <section className="section-icons">
+                <a href={data.demo} target="blank">
+                  <i
+                    className="fa-solid fa-globe icons"
+                    title="Link a demo"
+                  ></i>
+                </a>
+                <a href={data.repo} target="blank">
+                  <i
+                    className="fa-brands fa-github icons"
+                    title="Link a repositorio"
+                  ></i>
+                </a>
+              </section>
+            </section>
+          </section>
+          <section className="autor-info">
+            <img
+              className="autor-image"
+              src={data.image}
+              alt="Foto de la autora"
+            />
+            <p className="autor-job">{data.job}</p>
+            <p className="autor-name">{data.autor}</p>
+          </section>
+        </section>
+      </div>
+    );
+  });
 };
 
 export default CardDetail;

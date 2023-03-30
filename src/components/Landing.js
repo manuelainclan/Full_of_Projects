@@ -27,7 +27,7 @@ const Landing = ({ setDataCardList }) => {
       })
       .map((obj, index) => {
         return (
-          <Link to={`/card/${index}`}>
+          <Link to="/CardDetail">
             <li key={index} className="landing-card">
               <div
                 className="landing-card-background"
