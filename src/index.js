@@ -5,7 +5,7 @@ const mysql = require('mysql2/promise');
 // create and config server
 const server = express();
 server.use(cors());
-server.use(express.json());
+server.use(express.json(({ limit: "10mb" })));
 
 // init express aplication
 const serverPort = 4000;
@@ -42,7 +42,7 @@ mysql
 server.get('/api/projects/all', (req, res) => {
   console.log('Pidiendo a la base de datos información de las tarjetas.');
   let sql =
-    'SELECT * FROM project, autor WHERE project.fkAutor = autor.idAutor';
+    'SELECT * FROM project, autor WHERE project.fkAutor = autor.idAutor;';
   connection
     .query(sql)
     .then(([results, fields]) => {
