@@ -10,4 +10,14 @@ const dataApi = (data) => {
     });
 };
 
-export default dataApi;
+const listProjectApi = () => {
+  return fetch('http://localhost:4000/api/projects/all')
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+
+const api = { dataApi, listProjectApi };
+
+export default api;

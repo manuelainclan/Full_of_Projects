@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, matchPath } from 'react-router-dom';
 import '../styles/App.scss';
 import CreateProject from './CreateProject';
 import Landing from './Landing';
-import ls from '../service/localStorage';
+import api from '../service/api';
 import CardDetail from '../components/Preview/CardDetail';
 
 function App() {
-  const [dataCardList, setDataCardList] = useState(ls.get('dataCardLS', []));
+  const [dataCardList, setDataCardList] = useState([]);
+
+  useEffect(() => {
+    api.listProjectApi().then((cleanData) => {
+      setDataCardList(cleanData);
+    });
+  }, []);
+
+  console.log(dataCardList);
 
   const { pathname } = useLocation();
 

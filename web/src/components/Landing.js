@@ -9,22 +9,23 @@ import { useState } from 'react';
 const Landing = ({ setDataCardList, dataCardList }) => {
   const [searchA, setSearchA] = useState('');
   const [searchP, setSearchP] = useState('');
+
   const handleFav = (ev) => {
     const position = ev.currentTarget.id;
     const newArray = [...dataCardList];
     newArray[position].isFavorite = !newArray[position].isFavorite;
-    ls.set("dataCardLS", newArray);
+    ls.set('dataCardLS', newArray);
     setDataCardList(newArray);
-    
   };
   const handleBtnRemoveCard = (ev) => {
     const position = ev.currentTarget.id;
     const newArray = [...dataCardList];
     newArray.splice(position, 1);
-    ls.set("dataCardLS", newArray);
+    ls.set('dataCardLS', newArray);
     setDataCardList(newArray);
   };
   const renderCard = () => {
+    console.log('dataCardList', dataCardList);
     return dataCardList
       .filter((obj) => {
         return obj.autor
@@ -32,7 +33,7 @@ const Landing = ({ setDataCardList, dataCardList }) => {
           .includes(searchA.toLocaleLowerCase());
       })
       .filter((obj) => {
-        return obj.name
+        return obj.nameProject
           .toLocaleLowerCase()
           .includes(searchP.toLocaleLowerCase());
       })
@@ -100,15 +101,15 @@ const Landing = ({ setDataCardList, dataCardList }) => {
     setSearchP(ev.target.value);
   };
   const handleResetCards = () => {
-    ls.remove("dataCardLS");
+    ls.remove('dataCardLS');
     setDataCardList([]);
   };
 
   const renderFavs = () => {
     return dataCardList
       .filter((fav) => {
-        return fav.isFavorite === true ? true : null  
-       })
+        return fav.isFavorite === true ? true : null;
+      })
       .map((obj, index) => {
         return (
           <li key={index} className="landing-card">
@@ -180,7 +181,7 @@ const Landing = ({ setDataCardList, dataCardList }) => {
 
   return (
     <div className="container">
-      <Header logoFop={logoFop} logo={logo} linkTo={""} />
+      <Header logoFop={logoFop} logo={logo} linkTo={''} />
       <main>
         <h1 className="landing-title">Proyectos Molones</h1>
         <h2 className="landing-subtitle">
