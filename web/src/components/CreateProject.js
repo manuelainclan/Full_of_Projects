@@ -1,7 +1,7 @@
 import logoFop from '../images/logo-fop.png';
 import logo from '../images/logo-adalab.png';
 import { useEffect, useState } from 'react';
-import dataApi from '../service/api';
+import api from '../service/api';
 import ls from '../service/localStorage';
 import Header from './Header';
 import Preview from './Preview/Preview';
@@ -118,7 +118,7 @@ function CreateProject({ dataCardList, setDataCardList }) {
 
   const handleClickCreateCard = (ev) => {
     ev.preventDefault();
-    dataApi(data).then((info) => {
+    api.dataApi(data).then((info) => {
       console.log(info);
       if (info.success) {
         setCompletedForm(true);
