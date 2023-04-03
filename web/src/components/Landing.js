@@ -65,6 +65,20 @@ const Landing = ({ setDataCardList, dataCardList }) => {
                 <section className="project-technologies">
                   <p className="text">{obj.technologies}</p>
                 </section>
+                <section>
+                  <a href={obj.demo} target="blank">
+                    <i
+                      className="fa-solid fa-globe icons"
+                      title="Link a demo"
+                    ></i>
+                  </a>
+                  <a href={obj.repo} target="blank">
+                    <i
+                      className="fa-brands fa-github icons"
+                      title="Link a repositorio"
+                    ></i>
+                  </a>
+                </section>
               </section>
             </section>
 
