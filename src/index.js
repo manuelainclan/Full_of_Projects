@@ -5,7 +5,7 @@ const mysql = require('mysql2/promise');
 // create and config server
 const server = express();
 server.use(cors());
-server.use(express.json(({ limit: "10mb" })));
+server.use(express.json({ limit: '10mb' }));
 
 // init express aplication
 const serverPort = 4000;
@@ -56,4 +56,43 @@ server.get('/api/projects/all', (req, res) => {
     .catch((err) => {
       throw err;
     });
+});
+
+server.post('/api/projects/add', (req, res) => {
+  const data = req.body;
+  //validar aqui
+  let validaciones = {};
+  if (!data.name) {
+    validaciones.name = 'name';
+  }
+  if (!data.slogan) {
+    validaciones.slogan = 'slogan';
+  }
+  if (!data.technologies) {
+    validaciones.technologies = 'technologies';
+  }
+  if (!data.repo) {
+    validaciones.repo = 'repo';
+  }
+  if (!data.demo) {
+    validaciones.demo = 'demo';
+  }
+  if (!data.desc) {
+    validaciones.desc = 'desc';
+  }
+  if (!data.autor) {
+    validaciones.autor = 'autor';
+  }
+  if (!data.job) {
+    validaciones.job = 'job';
+  }
+  if (!data.image) {
+    validaciones.image = 'image';
+  }
+  if (!data.photo) {
+    validaciones.photo = 'photo';
+  }
+  if (Object.keys(validaciones)) {
+    res.json(validaciones);
+  }
 });
