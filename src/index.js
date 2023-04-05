@@ -92,7 +92,44 @@ server.post('/api/projects/add', (req, res) => {
   if (!data.photo) {
     validaciones.photo = 'photo';
   }
-  if (Object.keys(validaciones)) {
+  if (Object.keys(validaciones).length !== 0) {
     res.json(validaciones);
+  } else {
+    let sqlAutor = 'INSERT INTO autor (autor, job, photo) VALUES (?,?,?)';
+    let valuesAutor = [data.autor, data.job, data.photo];
+    connection
+      .query(sqlAutor, valuesAutor)
+      .then(([results, fields]) => {
+        console.log(results);
+        let sqlProject =
+          'INSERT INTO project (nameProject, slogan, technologies, repo, demo, descProject, image, fkAutor) VALUES (?,?,?,?,?,?,?,?)';
+        let valuesProject = [
+          data.name,
+          data.slogan,
+          data.technologies,
+          data.repo,
+          data.demo,
+          data.desc,
+          data.image,
+          results.insertId,
+        ];
+        connection
+          .query(sqlProject, valuesProject)
+          .then(([results, fields]) => {
+            let response = {
+              success: true,
+              cardURL: `http://localhost:4000/api/projects/add/${results.insertId}`,
+            };
+            res.json(response);
+          })
+          .catch((err) => {
+            throw err;
+          });
+      })
+      .catch((err) => {
+        throw err;
+      });
   }
 });
+
+server.use(express.static('./src/public-react'));
