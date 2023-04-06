@@ -46,18 +46,27 @@ const Landing = ({ setDataCardList, dataCardList }) => {
                 backgroundImage: `url(${obj.photo})`,
               }}
             ></div>
+            <a
+              href={`http://localhost:4000/api/projects/detail/${obj.idProject}`}
+              title="Mostrar más info"
+              className="btn-info"
+            >
+              <i
+                className="fas fa-info-circle icons"
+                style={{ color: '#edb3d7' }}
+              ></i>
+            </a>
             <button
               className="btn-remove-card"
               id={index}
               onClick={handleBtnRemoveCard}
+              title="Borrar tarjeta"
             >
-              {/* <i className="fa-sharp fa-solid fa-circle-xmark icons"></i> */}
               <i className="fa-solid fa-trash icons"></i>
             </button>
             <section className="project-info">
               <p className="project-subtitle">Personal Project Card</p>
               <hr className="landing-card-line" />
-
               <h2 className="project-title">{obj.name}</h2>
               <p className="project-slogan">{obj.slogan}</p>
               <p className="project-desc">{obj.desc}</p>
@@ -81,7 +90,6 @@ const Landing = ({ setDataCardList, dataCardList }) => {
                 </section>
               </section>
             </section>
-
             <section className="autor-info">
               <img
                 className="autor-image"
@@ -96,6 +104,7 @@ const Landing = ({ setDataCardList, dataCardList }) => {
                 <i
                   className="fa-solid fa-star icon-fav"
                   style={{ color: '#fff700' }}
+                  title="Guardar en favoritos"
                 ></i>
               ) : (
                 <i className="fa-regular fa-star icon-fav"></i>
@@ -138,13 +147,11 @@ const Landing = ({ setDataCardList, dataCardList }) => {
               id={index}
               onClick={handleBtnRemoveCard}
             >
-              {/* <i className="fa-sharp fa-solid fa-circle-xmark icons"></i> */}
               <i className="fa-solid fa-trash icons"></i>
             </button>
             <section className="project-info">
               <p className="project-subtitle">Personal Project Card</p>
               <hr className="landing-card-line" />
-
               <h2 className="project-title">{obj.name}</h2>
               <p className="project-slogan">{obj.slogan}</p>
               <p className="project-desc">{obj.desc}</p>
@@ -168,7 +175,6 @@ const Landing = ({ setDataCardList, dataCardList }) => {
                 </section>
               </section>
             </section>
-
             <section className="autor-info">
               <img
                 className="autor-image"
@@ -178,16 +184,6 @@ const Landing = ({ setDataCardList, dataCardList }) => {
               <p className="autor-job">{obj.job}</p>
               <p className="autor-name">{obj.autor}</p>
             </section>
-            {/* <button className="btn-fav" onClick={handleFav} id={index}>
-              {obj.isFavorite ? (
-                <i
-                  className="fa-solid fa-star icon-fav"
-                  style={{ color: "#fff700" }}
-                ></i>
-              ) : (
-                <i className="fa-regular fa-star icon-fav"></i>
-              )}
-            </button> */}
           </li>
         );
       });
@@ -208,13 +204,6 @@ const Landing = ({ setDataCardList, dataCardList }) => {
             title="Crear una nueva tarjeta"
           >
             Nuevo proyecto
-          </Link>
-          <Link
-            className="link btn-large"
-            to="/CardDetail"
-            title="Detalle de Tarjeta"
-          >
-            Detalle de Tarjeta
           </Link>
           <button
             className="btn-reset-cards"

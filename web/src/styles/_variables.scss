@@ -884,6 +884,7 @@
 .icon-fav {
   font-size: 20px;
   color: black;
+  cursor: pointer;
 
   @media all and (min-width: 768px) {
     font-size: 25px;
@@ -897,4 +898,11 @@
   left: 8px;
   border: none;
   background: transparent;
+}
+
+.btn-info {
+  z-index: 1;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
 }

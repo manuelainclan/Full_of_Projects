@@ -6,6 +6,7 @@ const mysql = require('mysql2/promise');
 const server = express();
 server.use(cors());
 server.use(express.json({ limit: '10mb' }));
+server.set('view engine', 'ejs');
 
 // init express aplication
 const serverPort = 4000;
@@ -118,7 +119,7 @@ server.post('/api/projects/add', (req, res) => {
           .then(([results, fields]) => {
             let response = {
               success: true,
-              cardURL: `http://localhost:4000/api/projects/add/${results.insertId}`,
+              cardURL: `http://localhost:4000/api/projects/detail/${results.insertId}`, //http://localhost:4000/api/projects/add/${obj.idProject}
             };
             res.json(response);
           })
@@ -132,4 +133,25 @@ server.post('/api/projects/add', (req, res) => {
   }
 });
 
-server.use(express.static('./src/public-react'));
+server.get('/api/projects/detail/:projectID', (req, res) => {
+  const projectId = req.params.projectID;
+  const sql =
+    'SELECT * FROM project, autor WHERE project.fkAutor = autor.idAutor AND idProject = ?';
+  connection
+    .query(sql, [projectId])
+    .then(([results, fields]) => {
+      res.render('project_detail', results[0]);
+    })
+    .catch((err) => {
+      throw err;
+    });
+});
+
+const staticServerPathAdmin = './src/public-react';
+server.use(express.static(staticServerPathAdmin));
+
+const staticServerPathStyles = './src/public-css/';
+server.use(express.static(staticServerPathStyles));
+
+const staticServerPathImages = './src/public-images/';
+server.use(express.static(staticServerPathImages));

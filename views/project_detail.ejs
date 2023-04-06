@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@100&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6885363b9f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/main.css">
+    <title>Detalles de tarjetas</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a class="link header-title" href="http://localhost:4000">
+                <img src="/logo-fop.png" alt="" class="logo-fop" />
+            </a>
+            <a href="https://www.adalab.es" target="blank">
+                <img src="/logo-adalab.png" alt="" class="logo" />
+            </a>
+        </header>
+        <main>
+            <h1 class="landing-title">Proyectos Molones</h1>
+            <section class="preview">
+                <img class="preview-image"
+                    src="<%= photo %>"
+                    alt="">
+                <section class="card">
+                    <section class="project-info">
+                        <p class="project-subtitle">Personal Project Card</p>
+                        <hr class="landing-card-line">
+                        <h2 class="project-title"><%= nameProject %></h2>
+                        <p class="project-slogan"><%= slogan %></p>
+                        <p class="project-desc"><%= descProject %></p>
+                        <section class="tech-icons">
+                            <section class="project-technologies">
+                                <p class="text"><%= technologies %></p>
+                            </section>
+                            <section class="section-icons">
+                                <a href="<%= demo %>" target="blank">
+                                    <i class="fa-solid fa-globe icons" title="Link a demo"></i>
+                                </a>
+                                <a href="<%= repo %>" target="blank">
+                                    <i class="fa-brands fa-github icons" title="Link a repositorio"></i>
+                                </a>
+                            </section>
+                        </section>
+                    </section>
+                    <section class="autor-info">
+                        <img class="autor-image"
+                            src="<%= image %>"
+                            alt="Foto de la autora">
+                        <p class="autor-job"><%= job %></p>
+                        <p class="autor-name"><%= autor %></p>
+                    </section>
+                </section>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
