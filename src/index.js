@@ -147,6 +147,30 @@ server.get('/api/projects/detail/:projectID', (req, res) => {
     });
 });
 
+server.delete('/api/projects/delete_all', (req, res) => {
+  const sql = 'DELETE FROM project';
+  connection
+    .query(sql)
+    .then(([results, fields]) => {
+      console.log(results);
+      const sqlAutor = 'DELETE FROM autor';
+      connection
+        .query(sqlAutor)
+        .then(([results, fields]) => {
+          res.json(results);
+          // res.json({
+          //   message: 'Se han eliminado los registros de la base de datos',
+          //});
+        })
+        .catch((err) => {
+          throw err;
+        });
+    })
+    .catch((err) => {
+      throw err;
+    });
+});
+
 const staticServerPathAdmin = './src/public-react';
 server.use(express.static(staticServerPathAdmin));
 

@@ -3,6 +3,7 @@ import Header from './Header';
 import logo from '../images/logo-adalab.png';
 import logoFop from '../images/logo-fop.png';
 import ls from '../service/localStorage';
+import api from '../service/api';
 import '../styles/App.scss';
 import { useState } from 'react';
 
@@ -67,9 +68,9 @@ const Landing = ({ setDataCardList, dataCardList }) => {
             <section className="project-info">
               <p className="project-subtitle">Personal Project Card</p>
               <hr className="landing-card-line" />
-              <h2 className="project-title">{obj.name}</h2>
+              <h2 className="project-title">{obj.nameProject}</h2>
               <p className="project-slogan">{obj.slogan}</p>
-              <p className="project-desc">{obj.desc}</p>
+              <p className="project-desc">{obj.descProject}</p>
               <section className="tech-icons">
                 <section className="project-technologies">
                   <p className="text">{obj.technologies}</p>
@@ -124,8 +125,12 @@ const Landing = ({ setDataCardList, dataCardList }) => {
     setSearchP(ev.target.value);
   };
   const handleResetCards = () => {
-    ls.remove('dataCardLS');
+    api.deleteAllCards().then((message) => {
+      console.log(message);
+    });
+    //ls.remove('dataCardLS');
     setDataCardList([]);
+    console.log('Click!!');
   };
 
   const renderFavs = () => {
@@ -152,9 +157,9 @@ const Landing = ({ setDataCardList, dataCardList }) => {
             <section className="project-info">
               <p className="project-subtitle">Personal Project Card</p>
               <hr className="landing-card-line" />
-              <h2 className="project-title">{obj.name}</h2>
+              <h2 className="project-title">{obj.nameProject}</h2>
               <p className="project-slogan">{obj.slogan}</p>
-              <p className="project-desc">{obj.desc}</p>
+              <p className="project-desc">{obj.descProject}</p>
               <section className="tech-icons">
                 <section className="project-technologies">
                   <p className="text">{obj.technologies}</p>

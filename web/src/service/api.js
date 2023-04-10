@@ -18,6 +18,17 @@ const listProjectApi = () => {
     });
 };
 
-const api = { dataApi, listProjectApi };
+const deleteAllCards = () => {
+  return fetch('http://localhost:4000/api/projects/delete_all', {
+    method: 'DELETE',
+    headers: { 'Content-type': 'application/json' },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+
+const api = { dataApi, listProjectApi, deleteAllCards };
 
 export default api;
