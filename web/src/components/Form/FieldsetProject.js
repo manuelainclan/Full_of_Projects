@@ -14,6 +14,7 @@ const FieldsetProject = ({ data, handleInput, message, messageErrorClass }) => {
           name="name"
           id="el nombre del proyecto"
           minLength="2"
+          maxLength="30ch"
           required
           value={data.name}
           onInput={handleInput}
@@ -31,6 +32,7 @@ const FieldsetProject = ({ data, handleInput, message, messageErrorClass }) => {
           id="el eslogan"
           placeholder="Eslogan"
           minLength="2"
+          maxLength="40ch"
           required
           value={data.slogan}
           onInput={handleInput}
@@ -79,6 +81,7 @@ const FieldsetProject = ({ data, handleInput, message, messageErrorClass }) => {
           placeholder="Tecnologías"
           name="technologies"
           id="las tecnologías usadas"
+          maxLength="30ch"
           required
           value={data.technologies}
           onInput={handleInput}
@@ -98,7 +101,7 @@ const FieldsetProject = ({ data, handleInput, message, messageErrorClass }) => {
           required
           value={data.desc}
           onInput={handleInput}
-          maxLength="500ch"
+          maxLength="300ch"
         ></textarea>
       </label>
       <small className={`error-message ${messageErrorClass.desc}`}>

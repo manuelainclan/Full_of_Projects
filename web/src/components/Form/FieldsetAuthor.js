@@ -13,6 +13,7 @@ const FieldsetAuthor = ({ data, handleInput, message, messageErrorClass }) => {
           placeholder="Nombre"
           name="autor"
           id="tu nombre personal"
+          maxLength="40ch"
           required
           value={data.autor}
           onInput={handleInput}
@@ -30,6 +31,7 @@ const FieldsetAuthor = ({ data, handleInput, message, messageErrorClass }) => {
           placeholder="Trabajo"
           name="job"
           id="tu profesión"
+          maxLength="40ch"
           required
           value={data.job}
           onInput={handleInput}
