@@ -1,12 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2/promise');
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger.json');
 
 // create and config server
 const server = express();
 server.use(cors());
 server.use(express.json({ limit: '10mb' }));
 server.set('view engine', 'ejs');
+server.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // init express aplication
 const serverPort = process.env.PORT || 4000;
@@ -156,6 +159,31 @@ server.delete('/api/projects/delete_all', (req, res) => {
       const sqlAutor = 'DELETE FROM autor';
       connection
         .query(sqlAutor)
+        .then(([results, fields]) => {
+          res.json(results);
+          // res.json({
+          //   message: 'Se han eliminado los registros de la base de datos',
+          //});
+        })
+        .catch((err) => {
+          throw err;
+        });
+    })
+    .catch((err) => {
+      throw err;
+    });
+});
+
+server.delete('/api/projects/delete_one/:idCard', (req, res) => {
+  let idCard = req.params.idCard;
+  const sql = 'DELETE FROM project WHERE fkAutor = ?';
+  connection
+    .query(sql, [idCard])
+    .then(([results, fields]) => {
+      console.log(results);
+      const sqlAutor = 'DELETE FROM autor WHERE idAutor= ?';
+      connection
+        .query(sqlAutor, [idCard])
         .then(([results, fields]) => {
           res.json(results);
           // res.json({

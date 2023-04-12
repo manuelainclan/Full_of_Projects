@@ -18,13 +18,28 @@ const Landing = ({ setDataCardList, dataCardList }) => {
     ls.set('dataCardLS', newArray);
     setDataCardList(newArray);
   };
+
   const handleBtnRemoveCard = (ev) => {
-    const position = ev.currentTarget.id;
+    const fkAutor = ev.currentTarget.id;
     const newArray = [...dataCardList];
-    newArray.splice(position, 1);
-    ls.set('dataCardLS', newArray);
-    setDataCardList(newArray);
+    api.deleteOneCard(fkAutor).then((message) => {
+      console.log(message);
+
+      const position = newArray.findIndex((el) => el.fkAutor === fkAutor);
+      newArray.splice(position, 1);
+      setDataCardList(newArray);
+      // ls.remove('dataCardLS');
+    });
+    console.log('Click!!');
   };
+
+  // const handleBtnRemoveCard = (ev) => {
+  //   const position = ev.currentTarget.id;
+  //   const newArray = [...dataCardList];
+  //   newArray.splice(position, 1);
+  //   ls.set('dataCardLS', newArray);
+  //   setDataCardList(newArray);
+  // };
   const renderCard = () => {
     console.log('dataCardList', dataCardList);
     return dataCardList
@@ -39,6 +54,7 @@ const Landing = ({ setDataCardList, dataCardList }) => {
           .includes(searchP.toLocaleLowerCase());
       })
       .map((obj, index) => {
+        console.log(obj);
         return (
           <li key={index} className="landing-card">
             <div
@@ -59,7 +75,7 @@ const Landing = ({ setDataCardList, dataCardList }) => {
             </a>
             <button
               className="btn-remove-card"
-              id={index}
+              id={obj.fkAutor}
               onClick={handleBtnRemoveCard}
               title="Borrar tarjeta"
             >
@@ -147,13 +163,6 @@ const Landing = ({ setDataCardList, dataCardList }) => {
                 backgroundImage: `url(${obj.photo})`,
               }}
             ></div>
-            <button
-              className="btn-remove-card"
-              id={index}
-              onClick={handleBtnRemoveCard}
-            >
-              <i className="fa-solid fa-trash icons"></i>
-            </button>
             <section className="project-info">
               <p className="project-subtitle">Personal Project Card</p>
               <hr className="landing-card-line" />
