@@ -9,7 +9,7 @@ server.use(express.json({ limit: '10mb' }));
 server.set('view engine', 'ejs');
 
 // init express aplication
-const serverPort = 4000;
+const serverPort = process.env.PORT || 4000;
 server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
