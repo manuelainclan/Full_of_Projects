@@ -29,13 +29,13 @@ async function api() {
 }
 
 async function getConnection() {
-  const configConnection = await mysql.createConnection({
+  const connection = await mysql.createConnection({
     host: 'sql.freedb.tech',
     database: 'freedb_Full Of Projects',
     user: 'freedb_Base64',
     password: 'HFpUad@JqahhC6d',
   });
-  const connection = await configConnection.connect();
+  await connection.connect();
 
   console.log(
     `Conexión establecida con la base de datos (identificador=${connection.threadId})`
