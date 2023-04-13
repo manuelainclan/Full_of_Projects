@@ -17,9 +17,34 @@ server.listen(serverPort, () => {
   console.log(`Server listening at https://full-of-projects.onrender.com`);
 });
 
+async function api() {
+  /*
+  fetch('')
+  .then(resp => resp.json())
+  .then(data => console.log(data))
+  */
+  const resp = await fetch('');
+  const data = await resp.json();
+  console.log(data);
+}
+
 let connection;
 
-function getConnection() {
+async function getConnection() {
+  const configConnection = await mysql.createConnection({
+    host: 'sql.freedb.tech',
+    database: 'freedb_Full Of Projects',
+    user: 'freedb_Base64',
+    password: 'HFpUad@JqahhC6d',
+  });
+  const connection = await configConnection.connect();
+
+  console.log(
+    `Conexión establecida con la base de datos (identificador=${connection.threadId})`
+  );
+
+  return connection;
+  /*
   return mysql
     .createConnection({
       host: 'sql.freedb.tech',
@@ -37,12 +62,19 @@ function getConnection() {
     .catch((err) => {
       console.error('Error de configuración: ' + err.stack);
     });
+    */
 }
 
-server.get('/api/projects/all', (req, res) => {
+server.get('/api/projects/all', async (req, res) => {
   console.log('Pidiendo a la base de datos información de las tarjetas.');
   let sql =
     'SELECT * FROM project, autor WHERE project.fkAutor = autor.idAutor;';
+
+  const connection = getConnection();
+  const [results, fields] = await connection.query(sql);
+  res.json(results);
+  connection.end();
+  /*
   getConnection()
     .then((connection) => {
       return connection.query(sql);
@@ -59,6 +91,7 @@ server.get('/api/projects/all', (req, res) => {
     .catch((err) => {
       throw err;
     });
+    */
 });
 
 server.post('/api/projects/add', (req, res) => {
