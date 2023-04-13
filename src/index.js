@@ -132,7 +132,7 @@ server.post('/api/projects/add', async (req, res) => {
     let sqlAutor = 'INSERT INTO autor (autor, job, photo) VALUES (?,?,?)';
     let valuesAutor = [data.autor, data.job, data.photo];
     const connection = await getConnection();
-    const [results, fields] = connection.query(sqlAutor, valuesAutor);
+    const [results, fields] = await connection.query(sqlAutor, valuesAutor);
 
     console.log(results);
     let sqlProject =
@@ -147,7 +147,7 @@ server.post('/api/projects/add', async (req, res) => {
       data.image,
       results.insertId,
     ];
-    const [resultsInsert] = connection.query(sqlProject, valuesProject);
+    const [resultsInsert] = await connection.query(sqlProject, valuesProject);
 
     let response = {
       success: true,
@@ -176,7 +176,7 @@ server.delete('/api/projects/delete_all', async (req, res) => {
 
   console.log(results);
   const sqlAutor = 'DELETE FROM autor';
-  const [resultsDelete] = connection.query(sqlAutor);
+  const [resultsDelete] = await connection.query(sqlAutor);
 
   res.json(resultsDelete);
   connection.end();
@@ -186,11 +186,11 @@ server.delete('/api/projects/delete_one/:idCard', async (req, res) => {
   let idCard = req.params.idCard;
   const sql = 'DELETE FROM project WHERE fkAutor = ?';
   const connection = await getConnection();
-  const [results] = connection.query(sql, [idCard]);
+  const [results] = await connection.query(sql, [idCard]);
 
   console.log(results);
   const sqlAutor = 'DELETE FROM autor WHERE idAutor= ?';
-  const [resultsDetele] = connection.query(sqlAutor, [idCard]);
+  const [resultsDetele] = await connection.query(sqlAutor, [idCard]);
 
   res.json(resultsDetele);
   connection.end();
