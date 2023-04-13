@@ -27,12 +27,12 @@ function getConnection() {
       user: 'freedb_Base64',
       password: 'HFpUad@JqahhC6d',
     })
-    .then((conn) => conn.connect())
-    .then((conn) => {
+    .then((connection) => connection.connect())
+    .then((connection) => {
       console.log(
         `Conexión establecida con la base de datos (identificador=${connection.threadId})`
       );
-      return conn;
+      return connection;
     })
     .catch((err) => {
       console.error('Error de configuración: ' + err.stack);
@@ -54,6 +54,7 @@ server.get('/api/projects/all', (req, res) => {
       });
 
       res.json(results);
+      connection.end();
     })
     .catch((err) => {
       throw err;
