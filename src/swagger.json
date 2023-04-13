@@ -13,11 +13,11 @@
   "basePath": "/",
   "tags": [
     {
-      "name": "Users",
-      "description": "API for users in the system"
+      "name": "Projects",
+      "description": "API for projects"
     }
   ],
-  "paths":{
+  "paths": {
     "/api/projects/add": {
       "post": {
         "tags": ["projects"],
@@ -26,32 +26,157 @@
           {
             "name": "name",
             "in": "body",
-            "description": "nombre del proyecto"
+            "description": "project name",
+            "required": true,
+            "type": "string"
           },
           {
             "name": "slogan",
             "in": "body",
-            "description": "eslogan del proyecto"
-          }
+            "description": "project slogan",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "technologies",
+            "in": "body",
+            "description": "technologies use in this project",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "repo",
+            "in": "body",
+            "description": "URL/link to project repository",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "demo",
+            "in": "body",
+            "description": "URL/link to project demo",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "desc",
+            "in": "body",
+            "description": "project descryption",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "autor",
+            "in": "body",
+            "description": "project author",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "job",
+            "in": "body",
+            "description": "author's job",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "body",
+            "description": "image of the author",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "photo",
+            "in": "body",
+            "description": "project photo",
+            "required": true,
+            "type": "string"
+          },
+           {
+          "name": "fkAutor",
+          "in": "body",
+          "description": "foreign key for relational database",
+          "required": true,
+          "type": "string"
+        }
         ],
         "produces": ["application/json"],
         "responses": {
           "200": {
-              "success": true,
-              "cardURL": "http://localhost:4000/api/projects/detail/${results.insertId}"
-            }
+            "success": true,
+            "cardURL": "http://localhost:4000/api/projects/detail/${results.insertId}"
+          }
         }
       }
     },
-    "/users": {
+    "/api/projects/all": {
       "get": {
-        "tags": ["Users"],
-        "summary": "Get all users in system",
+        "tags": ["projects"],
+        "summary": "Get all data for the projects",
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/detail/:projectID": {
+      "get": {
+        "tags": ["projects detail"],
+         "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "description": "ID of project that we want to find",
+            "type": "integer"
+          }
+        ],
+        "summary": "Get detail data for one project by projectID ",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/delete_all": {
+      "delete": {
+        "tags": ["projects"],
+        "summary": "Delete all projects in database",
+        "responses": {
+          "200": {
+            "description": "All projects are deleted",
+            "schema": {
+              
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/delete_one/:idCard": {
+      "delete": {
+        "tags": ["projects"],
+        "parameters": [
+          {
+            "name": "idCard",
+            "in": "path",
+            "required": true,
+            "description": "ID of card that we want to find to delete",
+            "type": "integer"
+          }
+        ],
+        "summary": "Delete project with given ID",
+        "responses": {
+          "200": {
+            "description": "Project is deleted",
+            "schema": {
             }
           }
         }
