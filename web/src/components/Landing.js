@@ -70,7 +70,7 @@ const Landing = ({ setDataCardList, dataCardList }) => {
             >
               <i
                 className="fas fa-info-circle icons"
-                style={{ color: '#84abc3' }}
+                style={{ color: '#336699' }}
               ></i>
             </a>
             <button
