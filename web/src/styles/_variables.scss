@@ -15,6 +15,7 @@
     display: grid;
     padding: 10px 20px 20px 20px;
     grid-template-rows: 80px 1fr;
+    justify-items: center;
   }
 }
 
@@ -25,9 +26,9 @@
   align-items: center;
 
   @media all and (min-width: 768px) {
+    min-width: 90%;
     height: 100px;
-    padding: 0 20px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
   }
 }
 
@@ -193,10 +194,9 @@
     flex-direction: row;
     align-items: stretch;
     justify-content: space-between;
+    min-width: 90%;
   }
 }
-
-
 
 .preview {
   margin-top: 20px;
@@ -204,7 +204,7 @@
   @media all and (min-width: 768px) {
     margin-top: 0;
     width: 60%;
-    padding: 0 20px;
+    padding-right: 20px;
   }
 
   &-image {
