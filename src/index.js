@@ -28,8 +28,6 @@ async function api() {
   console.log(data);
 }
 
-let connection;
-
 async function getConnection() {
   const configConnection = await mysql.createConnection({
     host: 'sql.freedb.tech',
@@ -70,7 +68,7 @@ server.get('/api/projects/all', async (req, res) => {
   let sql =
     'SELECT * FROM project, autor WHERE project.fkAutor = autor.idAutor;';
 
-  const connection = getConnection();
+  const connection = await getConnection();
   const [results, fields] = await connection.query(sql);
   res.json(results);
   connection.end();
