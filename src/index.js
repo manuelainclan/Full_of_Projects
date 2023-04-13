@@ -92,7 +92,7 @@ server.get('/api/projects/all', async (req, res) => {
     */
 });
 
-server.post('/api/projects/add', (req, res) => {
+server.post('/api/projects/add', async (req, res) => {
   const data = req.body;
   //validar aqui
   let validaciones = {};
@@ -131,102 +131,69 @@ server.post('/api/projects/add', (req, res) => {
   } else {
     let sqlAutor = 'INSERT INTO autor (autor, job, photo) VALUES (?,?,?)';
     let valuesAutor = [data.autor, data.job, data.photo];
-    connection
-      .query(sqlAutor, valuesAutor)
-      .then(([results, fields]) => {
-        console.log(results);
-        let sqlProject =
-          'INSERT INTO project (nameProject, slogan, technologies, repo, demo, descProject, image, fkAutor) VALUES (?,?,?,?,?,?,?,?)';
-        let valuesProject = [
-          data.name,
-          data.slogan,
-          data.technologies,
-          data.repo,
-          data.demo,
-          data.desc,
-          data.image,
-          results.insertId,
-        ];
-        connection
-          .query(sqlProject, valuesProject)
-          .then(([results, fields]) => {
-            let response = {
-              success: true,
-              cardURL: `https://full-of-projects.onrender.com/api/projects/detail/${results.insertId}`, //https://full-of-projects.onrender.com/api/projects/add/${obj.idProject}
-            };
-            res.json(response);
-          })
-          .catch((err) => {
-            throw err;
-          });
-      })
-      .catch((err) => {
-        throw err;
-      });
+    const connection = await getConnection();
+    const [results, fields] = connection.query(sqlAutor, valuesAutor);
+
+    console.log(results);
+    let sqlProject =
+      'INSERT INTO project (nameProject, slogan, technologies, repo, demo, descProject, image, fkAutor) VALUES (?,?,?,?,?,?,?,?)';
+    let valuesProject = [
+      data.name,
+      data.slogan,
+      data.technologies,
+      data.repo,
+      data.demo,
+      data.desc,
+      data.image,
+      results.insertId,
+    ];
+    const [resultsInsert] = connection.query(sqlProject, valuesProject);
+
+    let response = {
+      success: true,
+      cardURL: `https://full-of-projects.onrender.com/api/projects/detail/${resultsInsert.insertId}`, //https://full-of-projects.onrender.com/api/projects/add/${obj.idProject}
+    };
+    res.json(response);
+    connection.end();
   }
 });
 
-server.get('/api/projects/detail/:projectID', (req, res) => {
+server.get('/api/projects/detail/:projectID', async (req, res) => {
   const projectId = req.params.projectID;
   const sql =
     'SELECT * FROM project, autor WHERE project.fkAutor = autor.idAutor AND idProject = ?';
-  connection
-    .query(sql, [projectId])
-    .then(([results, fields]) => {
-      res.render('project_detail', results[0]);
-    })
-    .catch((err) => {
-      throw err;
-    });
+  const connection = await getConnection();
+  const [results, fields] = await connection.query(sql, [projectId]);
+
+  res.render('project_detail', results[0]);
+  connection.end();
 });
 
-server.delete('/api/projects/delete_all', (req, res) => {
+server.delete('/api/projects/delete_all', async (req, res) => {
   const sql = 'DELETE FROM project';
-  connection
-    .query(sql)
-    .then(([results, fields]) => {
-      console.log(results);
-      const sqlAutor = 'DELETE FROM autor';
-      connection
-        .query(sqlAutor)
-        .then(([results, fields]) => {
-          res.json(results);
-          // res.json({
-          //   message: 'Se han eliminado los registros de la base de datos',
-          //});
-        })
-        .catch((err) => {
-          throw err;
-        });
-    })
-    .catch((err) => {
-      throw err;
-    });
+  const connection = await getConnection();
+  const [results] = await connection.query(sql);
+
+  console.log(results);
+  const sqlAutor = 'DELETE FROM autor';
+  const [resultsDelete] = connection.query(sqlAutor);
+
+  res.json(resultsDelete);
+  connection.end();
 });
 
-server.delete('/api/projects/delete_one/:idCard', (req, res) => {
+server.delete('/api/projects/delete_one/:idCard', async (req, res) => {
   let idCard = req.params.idCard;
   const sql = 'DELETE FROM project WHERE fkAutor = ?';
-  connection
-    .query(sql, [idCard])
-    .then(([results, fields]) => {
-      console.log(results);
-      const sqlAutor = 'DELETE FROM autor WHERE idAutor= ?';
-      connection
-        .query(sqlAutor, [idCard])
-        .then(([results, fields]) => {
-          res.json(results);
-          // res.json({
-          //   message: 'Se han eliminado los registros de la base de datos',
-          //});
-        })
-        .catch((err) => {
-          throw err;
-        });
-    })
-    .catch((err) => {
-      throw err;
-    });
+  const connection = await getConnection();
+  const [results] = connection.query(sql, [idCard]);
+
+  console.log(results);
+  const sqlAutor = 'DELETE FROM autor WHERE idAutor= ?';
+  const [resultsDetele] = connection.query(sqlAutor, [idCard]);
+
+  res.json(resultsDetele);
+  connection.end();
 });
 
 const staticServerPathAdmin = './src/public-react';
