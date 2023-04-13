@@ -1,5 +1,5 @@
 const dataApi = (data) => {
-  return fetch('http://localhost:4000/api/projects/add', {
+  return fetch('https://full-of-projects.onrender.com/api/projects/add', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: { 'Content-type': 'application/json' },
@@ -11,7 +11,7 @@ const dataApi = (data) => {
 };
 
 const listProjectApi = () => {
-  return fetch('http://localhost:4000/api/projects/all')
+  return fetch('https://full-of-projects.onrender.com/api/projects/all')
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -19,10 +19,13 @@ const listProjectApi = () => {
 };
 
 const deleteAllCards = () => {
-  return fetch('http://localhost:4000/api/projects/delete_all', {
-    method: 'DELETE',
-    headers: { 'Content-type': 'application/json' },
-  })
+  return fetch(
+    'https://full-of-projects.onrender.com/api/projects/delete_all',
+    {
+      method: 'DELETE',
+      headers: { 'Content-type': 'application/json' },
+    }
+  )
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -30,10 +33,13 @@ const deleteAllCards = () => {
 };
 
 const deleteOneCard = (params) => {
-  return fetch(`http://localhost:4000/api/projects/delete_one/${params}`, {
-    method: 'DELETE',
-    headers: { 'Content-type': 'application/json' },
-  })
+  return fetch(
+    `https://full-of-projects.onrender.com/api/projects/delete_one/${params}`,
+    {
+      method: 'DELETE',
+      headers: { 'Content-type': 'application/json' },
+    }
+  )
     .then((response) => response.json())
     .then((data) => {
       return data;

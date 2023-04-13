@@ -64,7 +64,7 @@ const Landing = ({ setDataCardList, dataCardList }) => {
               }}
             ></div>
             <a
-              href={`http://localhost:4000/api/projects/detail/${obj.idProject}`}
+              href={`https://full-of-projects.onrender.com/api/projects/detail/${obj.idProject}`}
               title="Mostrar más info"
               className="btn-info"
             >

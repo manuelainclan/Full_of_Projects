@@ -14,7 +14,7 @@ server.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 // init express aplication
 const serverPort = process.env.PORT || 4000;
 server.listen(serverPort, () => {
-  console.log(`Server listening at http://localhost:${serverPort}`);
+  console.log(`Server listening at https://full-of-projects.onrender.com`);
 });
 
 let connection;
@@ -122,7 +122,7 @@ server.post('/api/projects/add', (req, res) => {
           .then(([results, fields]) => {
             let response = {
               success: true,
-              cardURL: `http://localhost:4000/api/projects/detail/${results.insertId}`, //http://localhost:4000/api/projects/add/${obj.idProject}
+              cardURL: `https://full-of-projects.onrender.com/api/projects/detail/${results.insertId}`, //https://full-of-projects.onrender.com/api/projects/add/${obj.idProject}
             };
             res.json(response);
           })
