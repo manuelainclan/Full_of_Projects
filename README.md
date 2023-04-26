@@ -1,57 +1,53 @@
-# Welcome to the "" page
+## Full of Projects 💡👩‍💻🎉
 
-With this app you will be able to upload your personal projects as well as other projects that you like.  By introducing the details and pictures into the app, it will return a beautiful card with the details that you have submitted.
+Hello! I'm Manuela Inclán, and I collaborated in the creation of this project called Full of Projects along with Marina Caro, Natalia Blanco, and Pilar Leiva.
 
-## Built with 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
-![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+You can see it live here! 👉 [full-of-projects.onrender.com](https://full-of-projects.onrender.com/)
 
+Full of Projects is a tool that allows users to create custom cards to present and share information about their projects. With this tool, users can summarize the main data of their projects and authors in a personalized card that includes photos, links, and other relevant information.
 
-## Getting Started
-1. In order to be able to work with this code you will need to download this repo:
+## This is what it looks like 👀
 
-(https://github.com/Adalab/project-promo-s-module-3-team-2)
+## Key Features 🚀
 
-2. Please remove the `node modules` folder and proceed to open the folder in your editor.
+- Easily create custom cards to present your projects.
+- Add photos and links to your card for a more visual presentation.
+- Share your card through an automatically generated link.
+- Allows users to present their projects, share information about them, and advertise them.
 
-After this you will need to run in your new terminal the following: 
+## Development Methodology 💻
 
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
+In Full of Projects, we implemented Scrum as a framework for product development. We always based our work on Agile values as key points of teamwork and continuous improvement. Some of the components we used to create the page are React and different external libraries that we investigated and used.
 
-4. Run the below comand in your terminal 
-   ```sh
-   npm start
-   ```
+## Technologies Used 💻
 
-##  List of Available Scripts (including the ones on the getting started section)
+- **HTML, CSS, SASS, JAVASCRIPT, REACT**
+- **Zeplin, Vs Code, GitHub**
+- Starter Kit Adalab, React Starter Kit
+- **MySQL Workbench, Node JS, Express JS**
+- Render, Swagger
 
-### `npm start`
+## Consolidated Learning 🎓
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In this project, we have consolidated the learning of different technologies and skills:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Implementation of **Scrum** as a product development methodology.
+- Identification and generation of the necessary components to create the page.
+- Use of **React** and search for information in external library documentation.
+- Learning and consolidation of the use of **Node.js** and **Express** to listen to requests from browsers.
+- Learning and consolidation of the use of **MySQL** to work with databases and save information persistently.
+- Consolidation of the learning of **REST API** to know how to structure and organize communications between a browser and a server optimally.
+- Deployment of a complete project, including front-end and back-end.
 
-### `npm run build`
+## Development Team 💪
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Marina Caro
+- Natalia Blanco
+- Pilar Leiva
+- Manuela Inclán
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## License 📝
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project is under the MIT License. For more information, see the [LICENSE.md](LICENSE.md) file.
 
-
-
-
-
-
-
-
-
+Thank you for visiting Full of Projects! We hope you like our tool for creating custom project cards. If you have any comments or suggestions, do not hesitate to contact us through our email.
