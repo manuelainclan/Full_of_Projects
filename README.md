@@ -7,6 +7,8 @@ You can see it live here! 👉 [full-of-projects.onrender.com](https://full-of-p
 Full of Projects is a tool that allows users to create custom cards to present and share information about their projects. With this tool, users can summarize the main data of their projects and authors in a personalized card that includes photos, links, and other relevant information.
 
 ## This is what it looks like 👀
+<img src="https://user-images.githubusercontent.com/121869164/234621837-49d90fe1-3bc5-4d19-97dc-609152d945f1.png" alt="" width="400"/>
+<img src="https://user-images.githubusercontent.com/121869164/234621866-896a3853-bb30-494d-b181-389efa7a33dd.png" alt="" width="400"/>
 
 ## Key Features 🚀
 
